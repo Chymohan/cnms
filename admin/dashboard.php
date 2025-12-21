@@ -195,13 +195,13 @@ if (!in_array($page, $allowed_pages, true)) {
                             </div>
                             <div class="p-15 border-bottom">
                                 <h6 class="font-medium m-b-10">Select Layout</h6>
-                                <div class="selectgroup dashboard-color w-50">
+                                <div class="selectgroup layout-color w-50">
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="value" value="1" class="selectgroup-input-radio select-dashboard" checked>
+                                        <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
                                         <span class="selectgroup-button">Light</span>
                                     </label>
                                     <label class="selectgroup-item">
-                                        <input type="radio" name="value" value="2" class="selectgroup-input-radio select-dashboard">
+                                        <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
                                         <span class="selectgroup-button">Dark</span>
                                     </label>
                                 </div>
