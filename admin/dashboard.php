@@ -34,7 +34,7 @@ $allowed_pages = [
     '../profile/profile.php',
     '../profile/edit_profile.php'
 ];
-if (!in_array($page, $allowed_pages,true)) {
+if (!in_array($page, $allowed_pages, true)) {
     $page = '404_error.php';
 }
 ?>
@@ -176,15 +176,15 @@ if (!in_array($page, $allowed_pages,true)) {
             </div>
             <!-- Main Content -->
             <div class="main-content">
-<?php
- if (in_array($page, $allowed_pages)) {
-        include $page;
-    } else {
-        header("Location: dashboard.php?page=404_error.php");
-        exit;
-    }?>
+                <?php
+                if (in_array($page, $allowed_pages)) {
+                    include $page;
+                } else {
+                    header("Location: dashboard.php?page=404_error.php");
+                    exit;
+                } ?>
                 <!-- starts table -->
-                
+
 
                 <div class="settingSidebar">
                     <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
@@ -304,7 +304,7 @@ if (!in_array($page, $allowed_pages,true)) {
     <script src="../assets/js/page/chart-chartjs.js"></script>
     <!-- Page Specific JS File -->
     <script src="../assets/js/page/index.js"></script>
-<script src="../assets/bundles/summernote/summernote-bs4.js"></script>
+    <script src="../assets/bundles/summernote/summernote-bs4.js"></script>
 
 
     <script src="../assets/bundles/datatables/datatables.min.js"></script>

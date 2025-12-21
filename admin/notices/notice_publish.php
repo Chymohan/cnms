@@ -9,16 +9,16 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 
 $notice_id = $_GET['id'] ?? null;
-if($notice_id){
+if ($notice_id) {
     $current_status = $conn->query("SELECT status FROM notices WHERE notice_id=$notice_id")->fetch_assoc()['status'];
-    $new_status = $current_status=='Draft' ? 'Published' : 'Draft';
-    
+    $new_status = $current_status == 'Draft' ? 'Published' : 'Draft';
+
     $stmt = $conn->prepare("UPDATE notices SET status=? WHERE notice_id=?");
     $stmt->bind_param("si", $new_status, $notice_id);
 
-    if($stmt->execute()){
+    if ($stmt->execute()) {
         $_SESSION['toast'] = [
-            'message' => $new_status=='Published' ? 'Notice published successfully' : 'Notice unpublished successfully',
+            'message' => $new_status == 'Published' ? 'Notice published successfully' : 'Notice unpublished successfully',
             'mode' => 'success'
         ];
     } else {
@@ -31,4 +31,3 @@ if($notice_id){
 
 header("Location: ../dashboard.php?page=notices/notices_list.php");
 exit;
-?>

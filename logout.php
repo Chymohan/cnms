@@ -8,3 +8,4 @@ $_SESSION['toast'] = [
 ];
 header("Location: login.php");
 exit;
+?>

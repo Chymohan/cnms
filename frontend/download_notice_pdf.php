@@ -3,7 +3,7 @@ session_start();
 require("../db.php");
 require("../lib/tcpdf/tcpdf.php"); // TCPDF library
 
-if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['student','teacher'])) {
+if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['student', 'teacher'])) {
     exit("Unauthorized access");
 }
 
@@ -70,7 +70,7 @@ $pdf->SetRightMargin($other_margin + $content_padding);
 /* ================= CONTENT ================= */
 
 // Main heading (title) - Times New Roman, font size 14
-$pdf->SetFont('times','B',14);
+$pdf->SetFont('times', 'B', 14);
 // Use MultiCell for centered text with width limit
 $pdf->MultiCell($content_width, 10, $notice['title'], 0, 'C', false, 1, $content_start_x);
 $pdf->Ln(5);
@@ -79,7 +79,7 @@ $pdf->Ln(5);
 $pdf->SetX($content_start_x);
 
 // Subheading / paragraph - Times New Roman, font size 12
-$pdf->SetFont('times','',12);
+$pdf->SetFont('times', '', 12);
 $pdf->Cell($content_width, 8, "Category: " . $notice['category'], 0, 1);
 $pdf->SetX($content_start_x);
 $pdf->Cell($content_width, 8, "Date: " . date("d M Y", strtotime($notice['created_at'])), 0, 1);
@@ -97,7 +97,7 @@ if (!empty($notice['attachment'])) {
     $file_path = "../uploads/" . $notice['attachment'];
 
     if (file_exists($file_path)) {
-        $pdf->SetFont('times',12);
+        $pdf->SetFont('times', 12);
         $pdf->SetX($content_start_x);
         $pdf->Cell($content_width, 8, "--- Attachment: " . $notice['attachment'] . " ---", 0, 1);
         $pdf->Ln(2);
@@ -105,18 +105,26 @@ if (!empty($notice['attachment'])) {
         $ext = strtolower(pathinfo($file_path, PATHINFO_EXTENSION));
 
         // Merge plain text attachments
-        if (in_array($ext, ['txt','csv','log'])) {
+        if (in_array($ext, ['txt', 'csv', 'log'])) {
             $content = file_get_contents($file_path);
             $pdf->SetX($content_start_x);
             $pdf->writeHTMLCell($content_width, 0, $content_start_x, '', nl2br(htmlspecialchars($content)), 0, 1, false, true, '', true);
-        } 
+        }
         // PDF or other files cannot merge
         else {
             $pdf->SetX($content_start_x);
             $pdf->writeHTMLCell(
-                $content_width, 0, $content_start_x, '',
+                $content_width,
+                0,
+                $content_start_x,
+                '',
                 "<i>[Attachment exists but cannot be merged into PDF. Download separately.]</i>",
-                0, 1, false, true, '', true
+                0,
+                1,
+                false,
+                true,
+                '',
+                true
             );
         }
     }

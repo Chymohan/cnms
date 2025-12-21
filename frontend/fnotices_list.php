@@ -44,7 +44,7 @@
     $result = $stmt->get_result();
     $notices = $result->fetch_all(MYSQLI_ASSOC);
     ?>
-<!-- contents here -->
+ <!-- contents here -->
  <h2 class="ml-5">Welcome,<?php if ($_SESSION['role'] === 'student') echo " Student";
                             else echo " Teacher"; ?> <?= htmlspecialchars($name) ?></h2>
 

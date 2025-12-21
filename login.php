@@ -120,7 +120,7 @@ if (isset($_POST['login'])) {
     <title> Login Page</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/tailwindcss.js"></script>
-  <link rel="stylesheet" href="assets/extra/css/all.min.css">
+    <link rel="stylesheet" href="assets/extra/css/all.min.css">
 
 </head>
 
@@ -200,20 +200,20 @@ if (isset($_POST['login'])) {
             </div>
 
             <!-- Password -->
-          <div class="mb-4 sm:mb-6 relative">
-    <label class="block text-gray-700 font-medium mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">
-        Password
-    </label>
+            <div class="mb-4 sm:mb-6 relative">
+                <label class="block text-gray-700 font-medium mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">
+                    Password
+                </label>
 
-    <input type="password" name="password" id="password" placeholder="Enter your password"
-        class="w-full px-3 py-2.5 sm:py-3 md:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base md:text-lg pr-10"
-        required>
+                <input type="password" name="password" id="password" placeholder="Enter your password"
+                    class="w-full px-3 py-2.5 sm:py-3 md:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base md:text-lg pr-10"
+                    required>
 
-    <!-- Toggle Icon -->
-    <i id="togglePassword"
-       class="fa-solid fa-eye absolute right-3 top-1/2 mt-4 mr-4 -translate-y-1/2 cursor-pointer text-gray-500">
-    </i>
-</div>
+                <!-- Toggle Icon -->
+                <i id="togglePassword"
+                    class="fa-solid fa-eye absolute right-3 top-1/2 mt-4 mr-4 -translate-y-1/2 cursor-pointer text-gray-500">
+                </i>
+            </div>
 
 
             <!-- Submit Button -->
@@ -245,15 +245,14 @@ if (isset($_POST['login'])) {
             togglePassword.classList.toggle('fa-eye-slash');
         });
         // Get current page
-          const currentPage = window.location.pathname.split("/").pop();
+        const currentPage = window.location.pathname.split("/").pop();
 
-    document.querySelectorAll(".nav-link").forEach(link => {
-        if (link.getAttribute("href") === currentPage) {
-            link.classList.remove("text-gray-700");
-            link.classList.add("text-blue-600", "underline", "font-semibold");
-        }
-    });
-
+        document.querySelectorAll(".nav-link").forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.remove("text-gray-700");
+                link.classList.add("text-blue-600", "underline", "font-semibold");
+            }
+        });
     </script>
 
     <script>
@@ -266,7 +265,7 @@ if (isset($_POST['login'])) {
 
         if (roleSelect.value !== 'student') batchDiv.style.display = 'none';
     </script>
-    
+
     <script src="js/sweetalert2.all.min.js"></script>
     <script src="js/toast.js"></script>
 

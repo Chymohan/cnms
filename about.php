@@ -92,14 +92,14 @@
         </div>
     </footer>
     <script>
-           const currentPage = window.location.pathname.split("/").pop();
+        const currentPage = window.location.pathname.split("/").pop();
 
-    document.querySelectorAll(".nav-link").forEach(link => {
-        if (link.getAttribute("href") === currentPage) {
-            link.classList.remove("text-gray-700");
-            link.classList.add("text-blue-600", "underline", "font-semibold");
-        }
-    });
+        document.querySelectorAll(".nav-link").forEach(link => {
+            if (link.getAttribute("href") === currentPage) {
+                link.classList.remove("text-gray-700");
+                link.classList.add("text-blue-600", "underline", "font-semibold");
+            }
+        });
     </script>
 </body>
 

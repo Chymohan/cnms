@@ -1,9 +1,9 @@
 <?php
 
 if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['student', 'teacher'])) {
-        header("Location: " . BASE_URL . "login.php");
-        exit;
-    }
+    header("Location: " . BASE_URL . "login.php");
+    exit;
+}
 
 $notice_id = (int)($_GET['id'] ?? 0);
 
@@ -33,64 +33,66 @@ if (!empty($notice['attachment'])) {
     }
 }
 ?>
-                <!-- starts table -->
-                <div class="card col-md-7 offset-md-3 px-5">
-                    <div class="card-header">
-                        <h3><?= htmlspecialchars($notice['title']) ?></h3>
+<!-- starts table -->
+<div class="card col-md-7 offset-md-3 px-5">
+    <div class="card-header">
+        <h3><?= htmlspecialchars($notice['title']) ?></h3>
+    </div>
+
+    <div class="card-body">
+        <div class="py-4">
+            <p class="clearfix">
+                <span class="float-left">
+                    <strong> Category :</strong>
+                </span>
+                <span class="float-center  ml-4">
+                    <?= $notice['category'] ?>
+                </span>
+            </p>
+            <p class="clearfix">
+                <span class="float-left">
+                    <strong>Date:</strong>
+                </span>
+                <span class="float-center  ml-4">
+                    <?= date("d M Y", strtotime($notice['created_at'])) ?>
+                </span>
+            </p>
+            <hr>
+            <div class="form-group text-black">
+                <pre><?= $notice['description'] ?></pre>
+            </div>
+            <hr>
+
+            <?php if (!empty($notice['attachment']) && file_exists("../uploads/" . $notice['attachment'])): ?>
+                <hr>
+                <?php if (!empty($attachment_content)) : ?>
+                    <!-- Display content for text-based attachments -->
+                    <div class="form-group text-black">
+                        <pre><strong> --Attachment Content--<br> </strong><?= $attachment_content ?></pre>
                     </div>
+                <?php else : ?>
+                    <p><i>Preview not available for this file type. Please download to view .</i></p>
+                <?php endif; ?>
 
-                    <div class="card-body">
-                        <div class="py-4">
-                            <p class="clearfix">
-                                <span class="float-left">
-                                    <strong> Category :</strong>
-                                </span>
-                                <span class="float-center  ml-4">
-                                    <?= $notice['category'] ?>
-                                </span>
-                            </p>
-                            <p class="clearfix">
-                                <span class="float-left">
-                                    <strong>Date:</strong>
-                                </span>
-                                <span class="float-center  ml-4">
-                                    <?= date("d M Y", strtotime($notice['created_at'])) ?>
-                                </span>
-                            </p>
-                            <hr>
-                            <div class="form-group text-black"><pre><?= $notice['description'] ?></pre></div>
-                            <hr>
+                <hr>
+            <?php endif; ?>
 
-                            <?php if (!empty($notice['attachment']) && file_exists("../uploads/".$notice['attachment'])): ?>
-                            <hr>
-                            <?php if (!empty($attachment_content)) : ?>
-                                <!-- Display content for text-based attachments -->
-                                <div class="form-group text-black">
-                                    <pre><strong> --Attachment Content--<br> </strong><?= $attachment_content ?></pre>
-                                </div>
-                            <?php else : ?>
-                                <p><i>Preview not available for this file type. Please download to view .</i></p>
-                            <?php endif; ?>
+            <p class="clearfix">
+                <span class="float-left">
+                    <?php if (!empty($notice['attachment'])): ?>
 
-                            <hr>
-                            <?php endif; ?>
+                        <a href="<?= BASE_URL ?>uploads/<?= htmlspecialchars($notice['attachment']) ?>" download><button class="btn btn-primary"><i class="fa fa-download"></i> Download Attachment</button></a>
 
-                            <p class="clearfix">
-                                <span class="float-left">
-                                    <?php if (!empty($notice['attachment'])): ?>
+                    <?php endif; ?>
 
-                                        <a href="<?= BASE_URL ?>uploads/<?= htmlspecialchars($notice['attachment']) ?>" download><button class="btn btn-primary"><i class="fa fa-download"></i> Download Attachment</button></a>
-
-                                    <?php endif; ?>
-
-                                </span>
-                                <span class="float-right text-muted">
-                                    <a href="download_notice_pdf.php?id=<?= $notice['notice_id'] ?>" class="btn btn-info"><i class="fas fa-file-pdf"></i> Download Notice as PDF</a>
-                                </span>
+                </span>
+                <span class="float-right text-muted">
+                    <a href="download_notice_pdf.php?id=<?= $notice['notice_id'] ?>" class="btn btn-info"><i class="fas fa-file-pdf"></i> Download Notice as PDF</a>
+                </span>
 
 
-                            </p>
+            </p>
 
-                        </div>
-                    </div>
-                </div>
+        </div>
+    </div>
+</div>

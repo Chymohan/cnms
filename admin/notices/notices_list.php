@@ -1,7 +1,7 @@
 <?php
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: " . BASE_URL . "login.php");
-    exit;
+  header("Location: " . BASE_URL . "login.php");
+  exit;
 }
 
 // Search/filter inputs
