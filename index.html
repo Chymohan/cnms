@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/tailwindcss.js"></script>
+    
+
+    <style>
+/* Only for text links (not buttons) */
+.nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0; /* align with text */
+    width: 100%;
+    height: 2px;
+    background-color: #2563eb; /* Tailwind blue-600 */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-link.active:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+</style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex flex-col">
+    <!-- Navigation - Made responsive -->
+    <nav class="sticky top-0 bg-slate-200 shadow-md z-10">
+        <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-5 md:py-6 lg:py-7">
+            <div class="flex items-center justify-between">
+                <div class=" flex justify-center my-auto text-black-500 text-xl sm:text-2xl md:text-2xl font-bold   ">
+                    <a href=""> <img alt="image" src="assets/img/logo.png" class="h-12 " />
+                    </a>
+                    <span class="logo-name my-auto">CNMS</span>
+
+                </div>
+                <ul class="flex space-x-3 sm:space-x-4 md:space-x-6">
+                    <li>
+                        <a href="index.html"
+                            class="nav-link text-gray-700 hover:text-blue-600 hover:underline transition-all font-medium text-sm sm:text-base md:text-base">
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.php"
+                            class="nav-link text-gray-700 hover:text-blue-600 hover:underline transition-all font-medium text-sm sm:text-base md:text-base">
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.php"
+                            class="nav-link relative bg-blue-400 hover:bg-blue-700 text-white px-3 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg font-medium text-sm sm:text-base md:text-base hover:shadow-md transition-all">
+                            Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content - Made responsive -->
+    <main class="flex-1 container mx-auto px-4 sm:px-6">
+        <div class="min-h-[calc(100vh-200px)] flex flex-col justify-center items-center py-8 sm:py-12">
+            <div class="w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl text-center px-4">
+                <!-- Heading -->
+                <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4">
+                    College Notice Management System
+                </h1>
+
+                <!-- Subheading -->
+                <h2 class="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 sm:mb-6 lg:mb-8">
+                    A smart and reliable platform to manage, publish, and access college notices anytime, anywhere.
+                </h2>
+
+                <!-- Description -->
+                <p class="text-gray-700 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 lg:mb-10 leading-relaxed">
+                    The College Notice Management System (CNMS) simplifies the way colleges share important
+                    announcements.
+                    It allows administrators and teachers to publish notices digitally, while students can easily view,
+                    search, and download notices from a single, organized platform—saving time and reducing dependency
+                    on physical notice boards.
+                </p>
+
+                <!-- Buttons - Made responsive -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 md:gap-5 mt-4">
+                    <a href="about.php"
+                        class="w-full sm:w-auto px-6 py-3 bg-blue-700 hover:bg-blue-400 hover:text-white hover:shadow-lg hover:scale-102 text-slate-800 font-medium rounded-lg hover:bg-blue-200 hover:border-blue-600 transition-all duration-300 text-sm sm:text-base md:text-lg text-center">
+                        About Us
+                    </a>
+                    <a href="login.php"
+                        class="w-full sm:w-auto px-6 py-3 bg-blue-400 hover:bg-blue-700 hover:text-slate-800 text-white font-medium rounded-lg hover:shadow-lg hover:scale-102 transition-all duration-300 text-sm sm:text-base md:text-lg text-center">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer - Made responsive -->
+    <footer class="bg-slate-200 border-t border-gray-200 py-4 sm:py-5 md:py-6 lg:py-7 mt-auto">
+        <div class="container mx-auto px-4">
+            <p
+                class="text-center text-black uppercase  text-xs sm:text-sm md:text-base font-family: Arial, sans-serif; font-[16px]; font-bold">
+                © 2026 All Right Reserved. Designed By Mohan Chaudhary & Raj Bastola
+            </p>
+        </div>
+    </footer>
+<script>
+     const currentPage = window.location.pathname.split("/").pop();
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+        if (link.getAttribute("href") === currentPage) {
+            link.classList.remove("text-gray-700");
+            link.classList.add("text-blue-600", "underline", "font-semibold");
+        }
+    });
+</script>
+
+</body>
+
+</html>
