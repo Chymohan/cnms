@@ -3,52 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>Home Page - CNMS</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="assets/extra/css/all.min.css" />
     <script src="js/tailwindcss.js"></script>
-
-    <style>
-      /* Only for text links (not buttons) */
-      .nav-link.active::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0; /* align with text */
-        width: 100%;
-        height: 2px;
-        background-color: #2563eb; /* Tailwind blue-600 */
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.3s ease;
-      }
-
-      .nav-link.active:hover::after,
-      .nav-link.active::after {
-        transform: scaleX(1);
-      }
-    </style>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/favicon.ico"
+    />
   </head>
-
-  <body
-    class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex flex-col"
-  >
-    <!-- Navigation - Made responsive -->
-    <nav class="sticky top-0 bg-slate-200 shadow-md z-10">
+  <body class="bg-slate-80 min-h-screen">
+    <!-- Navigation with mobile sidebar -->
+    <nav class="sticky top-0 bg-[#EBF4DD] shadow-md z-50">
       <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-5 md:py-6 lg:py-7">
         <div class="flex items-center justify-between">
-          <div
-            class="flex justify-center my-auto text-black-500 text-xl sm:text-2xl md:text-2xl font-bold"
-          >
-            <a href="">
-              <img alt="image" src="assets/img/logo.png" class="h-12" />
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <a href="index.html">
+              <img
+                alt="logo"
+                src="assets/img/logo.png"
+                class="h-10 sm:h-11 md:h-12"
+              />
             </a>
-            <span class="logo-name my-auto">CNMS</span>
+            <span
+              class="logo-name text-xl sm:text-2xl md:text-2xl font-bold text-gray-800 my-auto"
+              >CNMS</span
+            >
           </div>
-          <ul class="flex space-x-3 sm:space-x-4 md:space-x-6">
+
+          <!-- Desktop menu -->
+          <ul
+            class="hidden md:flex items-center space-x-6 md:space-x-8 lg:space-x-10"
+          >
             <li>
               <a
                 href="index.html"
-                class="nav-link text-gray-700 hover:text-blue-600 hover:underline transition-all font-medium text-sm sm:text-base md:text-base"
+                class="nav-link text-gray-700 hover:text-blue-600 font-medium text-base lg:text-lg transition"
               >
                 Home
               </a>
@@ -56,7 +48,7 @@
             <li>
               <a
                 href="about.php"
-                class="nav-link text-gray-700 hover:text-blue-600 hover:underline transition-all font-medium text-sm sm:text-base md:text-base"
+                class="nav-link text-gray-700 hover:text-blue-600 font-medium text-base lg:text-lg transition"
               >
                 About
               </a>
@@ -64,18 +56,93 @@
             <li>
               <a
                 href="login.php"
-                class="nav-link relative bg-blue-400 hover:bg-blue-700 text-white px-3 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg font-medium text-sm sm:text-base md:text-base hover:shadow-md transition-all"
+                class="nav-link bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-base lg:text-lg hover:shadow-md transition"
               >
                 Login
               </a>
             </li>
           </ul>
+
+          <!-- Mobile Hamburger -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-gray-800 focus:outline-none p-2"
+          >
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+                id="menu-icon-path"
+              />
+            </svg>
+          </button>
         </div>
       </div>
+
+      <!-- Mobile Sidebar -->
+      <div
+        id="mobile-sidebar"
+        class="fixed inset-y-0 right-0 z-50 w-72 sm:w-80 bg-[#EBF4DD] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+      >
+        <div
+          class="flex justify-between items-center p-6 border-b border-gray-300"
+        >
+          <span class="text-xl font-bold text-gray-800">Menu</span>
+          <button id="close-sidebar" class="text-gray-700 hover:text-gray-900">
+            <svg
+              class="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex flex-col p-6 space-y-5">
+          <a
+            href="index.html"
+            class="nav-link text-gray-800 hover:text-blue-600 text-lg font-medium transition px-4 py-3 hover:bg-white/60 rounded-lg"
+          >
+            Home
+          </a>
+          <a
+            href="about.php"
+            class="nav-link text-gray-800 hover:text-blue-600 text-lg font-medium transition px-4 py-3 hover:bg-white/60 rounded-lg"
+          >
+            About
+          </a>
+          <a
+            href="login.php"
+            class="nav-link bg-blue-400 hover:bg-blue-600 text-white text-lg font-medium transition px-4 py-3 rounded-lg hover:shadow-md"
+          >
+            Login
+          </a>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        id="sidebar-overlay"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300 md:hidden"
+      ></div>
     </nav>
 
     <!-- Main Content - Made responsive -->
-    <main class="flex-1 container mx-auto px-4 sm:px-6">
+    <main class="flex-1 container mx-auto px-4 sm:px-6 min-h-screen">
       <div
         class="min-h-[calc(100vh-200px)] flex flex-col justify-center items-center py-8 sm:py-12"
       >
@@ -91,7 +158,7 @@
 
           <!-- Subheading -->
           <h2
-            class="text-lg sm:text-xl md:text-2xl text-gray-600 mb-4 sm:mb-6 lg:mb-8"
+            class="text-lg sm:text-2xl md:text-2xl text-gray-600 mb-4 sm:mb-6 lg:mb-8"
           >
             A smart and reliable platform to manage, publish, and access college
             notices anytime, anywhere.
@@ -99,7 +166,7 @@
 
           <!-- Description -->
           <p
-            class="text-gray-700 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 lg:mb-10 leading-relaxed"
+            class="text-gray-700 text-xl sm:text-base md:text-lg mb-6 sm:mb-8 lg:mb-10 leading-relaxed"
           >
             The College Notice Management System (CNMS) simplifies the way
             colleges share important announcements. It allows administrators and
@@ -115,13 +182,13 @@
           >
             <a
               href="about.php"
-              class="w-full sm:w-auto px-6 py-3 bg-blue-700 hover:bg-blue-400 hover:text-white hover:shadow-lg hover:scale-102 text-slate-800 font-medium rounded-lg hover:bg-blue-200 hover:border-blue-600 transition-all duration-300 text-sm sm:text-base md:text-lg text-center"
+              class="w-full sm:w-auto px-6 py-3 bg-blue-700 hover:bg-blue-400 hover:text-white hover:shadow-lg hover:scale-102 text-slate-800 font-medium rounded-lg hover:bg-blue-200 hover:border-blue-600 transition-all duration-300 text-xl sm:text-base md:text-lg text-center"
             >
               About Us
             </a>
             <a
               href="login.php"
-              class="w-full sm:w-auto px-6 py-3 bg-blue-400 hover:bg-blue-700 hover:text-slate-800 text-white font-medium rounded-lg hover:shadow-lg hover:scale-102 transition-all duration-300 text-sm sm:text-base md:text-lg text-center"
+              class="w-full sm:w-auto px-6 py-3 bg-blue-400 hover:bg-blue-700 hover:text-slate-800 text-white font-medium rounded-lg hover:shadow-lg hover:scale-102 transition-all duration-300 text-xl sm:text-base md:text-lg text-center"
             >
               Get Started
             </a>
@@ -132,25 +199,16 @@
 
     <!-- Footer - Made responsive -->
     <footer
-      class="bg-slate-200 border-t border-gray-200 py-4 sm:py-5 md:py-6 lg:py-7 mt-auto"
+      class="bg-[#EBF4DD] border-t border-gray-200 py-4 sm:py-5 md:py-6 lg:py-7 mt-auto"
     >
       <div class="container mx-auto px-4">
         <p
-          class="text-center text-black uppercase text-xs sm:text-sm md:text-base font-family: Arial, sans-serif; font-[16px]; font-bold"
+          class="text-center text-black uppercase text-xs sm:text-xl md:text-base font-family: Arial, sans-serif; font-[16px]; font-bold"
         >
           © 2026 All Right Reserved. Designed By Mohan Chaudhary & Raj Bastola
         </p>
       </div>
     </footer>
-    <script>
-      const currentPage = window.location.pathname.split("/").pop();
-
-      document.querySelectorAll(".nav-link").forEach((link) => {
-        if (link.getAttribute("href") === currentPage) {
-          link.classList.remove("text-gray-700");
-          link.classList.add("text-blue-600", "underline", "font-semibold");
-        }
-      });
-    </script>
+    <script src="js/main.js"></script>
   </body>
 </html>

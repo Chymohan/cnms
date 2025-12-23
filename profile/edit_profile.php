@@ -124,20 +124,20 @@ ob_end_flush();
                 <form method="POST" enctype="multipart/form-data">
 
                     <div class="mb-2 ml-5 mx-auto col-10">
-                        <label>Full Name *</label>
+                        <label>Full Name <span class="text-danger">*</span></label>
                         <input type="text" name="name" class="form-control"
                             value="<?= htmlspecialchars($user['name']) ?>" required>
                     </div>
 
                     <div class="mb-2 ml-5 mx-auto col-10">
-                        <label>Email *</label>
+                        <label>Email <span class="text-danger">*</span></label>
                         <input type="email" name="email" class="form-control"
                             value="<?= htmlspecialchars($user['email']) ?>" required>
                     </div>
 
                     <?php if ($user['role'] === 'student'): ?>
                         <div class="mb-2 ml-5 mx-auto col-10">
-                            <label>Batch *</label>
+                            <label>Batch <span class="text-danger">*</span></label>
                             <select name="batch" id="batch" class="form-control">
                                 <?php foreach ($batches as $b): ?>
                                     <option value="<?= $b['batch_id'] ?>"

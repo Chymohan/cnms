@@ -114,158 +114,191 @@ if (isset($_POST['login'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title> Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page - CNMS</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/tailwindcss.js"></script>
     <link rel="stylesheet" href="assets/extra/css/all.min.css">
+    <script src="js/tailwindcss.js"></script>
+    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
 
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex flex-col">
-    <!-- Navigation -->
-    <nav class="sticky top-0 bg-slate-200 shadow-md z-10">
+<body class="bg-slate-80 min-h-screen">
+
+    <!-- Navigation with mobile sidebar -->
+    <nav class="sticky top-0 bg-[#EBF4DD] shadow-md z-50">
         <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-5 md:py-6 lg:py-7">
             <div class="flex items-center justify-between">
-                <div class=" flex justify-center my-auto text-black-500 text-xl sm:text-2xl md:text-2xl font-bold   ">
-                    <a href=""> <img alt="image" src="assets/img/logo.png" class="h-12 " />
-                    </a>
-                    <span
-                        class="logo-name my-auto">CNMS</span>
 
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <a href="index.html">
+                        <img alt="logo" src="assets/img/logo.png" class="h-10 sm:h-11 md:h-12" />
+                    </a>
+                    <span class="logo-name text-xl sm:text-2xl md:text-2xl font-bold text-gray-800 my-auto">CNMS</span>
                 </div>
-                <ul class="flex space-x-3 sm:space-x-4 md:space-x-6">
+
+                <!-- Desktop menu -->
+                <ul class="hidden md:flex items-center space-x-6 md:space-x-8 lg:space-x-10">
                     <li>
-                        <a href="index.html" class="nav-link relative hover:text-blue-600 font-medium text-sm sm:text-base md:text-base transition-colors">
+                        <a href="index.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium text-base lg:text-lg transition">
                             Home
                         </a>
                     </li>
                     <li>
-                        <a href="about.php" class="nav-link relative hover:text-blue-600 font-medium text-sm sm:text-base md:text-base transition-colors">
+                        <a href="about.php" class="nav-link text-gray-700 hover:text-blue-600 font-medium text-base lg:text-lg transition">
                             About
                         </a>
                     </li>
                     <li>
-                        <a href="login.php" class="nav-link relative bg-blue-400 hover:bg-blue-700 text-white px-3 py-1.5 sm:px-4 sm:py-2 md:px-4 md:py-2 rounded-lg font-medium text-sm sm:text-base md:text-base hover:shadow-md transition-all">
+                        <a href="login.php" class="nav-link bg-blue-400 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium text-base lg:text-lg hover:shadow-md transition">
                             Login
                         </a>
                     </li>
                 </ul>
+
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none p-2">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" id="menu-icon-path" />
+                    </svg>
+                </button>
+
             </div>
         </div>
+
+        <!-- Mobile Sidebar -->
+        <div id="mobile-sidebar" class="
+    fixed inset-y-0 right-0 z-50 w-72 sm:w-80 bg-[#EBF4DD] shadow-2xl
+    transform translate-x-full transition-transform duration-300 ease-in-out
+    md:hidden
+  ">
+            <div class="flex justify-between items-center p-6 border-b border-gray-300">
+                <span class="text-xl font-bold text-gray-800">Menu</span>
+                <button id="close-sidebar" class="text-gray-700 hover:text-gray-900">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="flex flex-col p-6 space-y-5">
+                <a href="index.html" class="nav-link text-gray-800 hover:text-blue-600 text-lg font-medium transition px-4 py-3 hover:bg-white/60 rounded-lg">
+                    Home
+                </a>
+                <a href="about.php" class="nav-link text-gray-800 hover:text-blue-600 text-lg font-medium transition px-4 py-3 hover:bg-white/60 rounded-lg">
+                    About
+                </a>
+                <a href="login.php" class="nav-link bg-blue-400 hover:bg-blue-600 text-white text-lg font-medium transition px-4 py-3 rounded-lg hover:shadow-md">
+                    Login
+                </a>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div id="sidebar-overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 hidden transition-opacity duration-300 md:hidden"></div>
     </nav>
 
-
     <!-- Login Form Container -->
-    <div class="flex-1 flex justify-center items-center px-4 sm:px-6 py-8 sm:py-12">
-        <form method="POST" class="bg-slate-100 rounded-xl shadow-xl w-full max-w-md sm:max-w-lg md:max-w-lg lg:max-w-xl p-4 sm:p-5 md:p-6 lg:p-8">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-800 mb-4 sm:mb-6">
+    <div class="flex-1 flex items-center justify-center px-4 py-10 sm:px-6 sm:py-12 md:px-8 lg:py-16 bg-gradient-to-br from-blue-50/30 to-indigo-50/30 min-h-screen">
+        <form
+            method="POST"
+            class="bg-slate-90 rounded-2xl shadow-xl w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl 
+           p-6 sm:p-8 md:p-10 lg:p-12 space-y-6 sm:space-y-7 md:space-y-8">
+            <!-- Heading -->
+            <h2 class="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 tracking-tight">
                 Login
             </h2>
 
-            <?php if (isset($error)) {
-                echo '<div class="mb-3 sm:mb-4 p-3 bg-red-50 text-red-600 text-sm sm:text-base rounded-lg border border-red-200">' . $error . '</div>';
-            } ?>
+            <!-- Error Message -->
+            <?php if (isset($error)): ?>
+                <div class="p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-center text-base sm:text-lg">
+                    <?php echo $error; ?>
+                </div>
+            <?php endif; ?>
 
             <!-- Role Selection -->
-            <div class="mb-3 sm:mb-4">
-                <label class="block text-gray-700 font-medium mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">
-                    Select Role
-                </label>
-                <select name="role" id="roleSelect" class="w-full px-3 py-2.5 sm:py-3 md:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base md:text-lg">
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Select Role</label>
+                <select name="role" id="roleSelect"
+                    class="w-full px-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200">
                     <option value="student" selected>Student</option>
                     <option value="teacher">Teacher</option>
                     <option value="admin">Admin</option>
                 </select>
             </div>
 
-            <!-- Email/User ID -->
-            <div class="mb-3 sm:mb-4">
-                <label class="block text-gray-700 font-medium mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">
-                    Email / User ID
-                </label>
-                <input type="text" name="username" placeholder="Enter your email or user ID"
-                    class="w-full px-3 py-2.5 sm:py-3 md:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base md:text-lg" required>
+            <!-- Email / User ID -->
+            <div>
+                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Email / User ID</label>
+                <input type="text" name="username" placeholder="Enter your email or user ID" required
+                    class="w-full px-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
             </div>
 
             <!-- Batch Field -->
-            <div class="mb-3 sm:mb-4" id="batchDiv">
-                <label class="block text-gray-700 font-medium mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">
-                    Batch
-                </label>
+            <div id="batchDiv">
+                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Batch Year</label>
                 <input type="text" name="batch" placeholder="e.g., 2023"
-                    class="w-full px-3 py-2.5 sm:py-3 md:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base md:text-lg">
+                    class="w-full px-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
             </div>
 
-            <!-- Password -->
-            <div class="mb-4 sm:mb-6 relative">
-                <label class="block text-gray-700 font-medium mb-1 sm:mb-2 text-sm sm:text-base md:text-lg">
-                    Password
-                </label>
-
-                <input type="password" name="password" id="password" placeholder="Enter your password"
-                    class="w-full px-3 py-2.5 sm:py-3 md:py-3.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all text-sm sm:text-base md:text-lg pr-10"
-                    required>
-
-                <!-- Toggle Icon -->
+            <!-- Password with Eye Icon -->
+            <div class="relative">
+                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required
+                    class="w-full px-4 py-3.5 pr-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
+                <!-- Eye Icon (positioned perfectly) -->
                 <i id="togglePassword"
-                    class="fa-solid fa-eye absolute right-3 top-1/2 mt-4 mr-4 -translate-y-1/2 cursor-pointer text-gray-500">
+                    class="fa-solid fa-eye absolute right-4 top-1/2  mt-4 mr-1 -translate-y-1/2 text-gray-500 hover:text-gray-700 cursor-pointer text-xs sm:text-xl transition-colors duration-200">
                 </i>
             </div>
 
-
             <!-- Submit Button -->
             <button type="submit" name="login"
-                class="w-full bg-blue-400 hover:bg-blue-700 text-white font-medium py-2.5 sm:py-3 md:py-3.5 rounded-lg hover:shadow-lg transition-all duration-300 text-sm sm:text-base md:text-lg">
+                class="w-full bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white font-semibold py-3.5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 text-base sm:text-lg md:text-xl">
                 Login
             </button>
         </form>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-200 border-t border-gray-200 py-4 sm:py-5 md:py-6 lg:py-7">
-        <div class="container mx-auto px-4">
-            <p class="text-center text-black uppercase  text-xs sm:text-sm md:text-base font-family: Arial, sans-serif; font-[16px]; font-bold">
-                © 2026 All Right Reserved. Designed By Mohan Chaudhary & Raj Bastola
+    <!-- footer -->
+    <footer class="bg-[#EBF4DD] border-t border-gray-200 py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-black uppercase text-sm sm:text-base font-bold">
+                © 2026 All Rights Reserved. Designed By Mohan Chaudhary & Raj Bastola
             </p>
         </div>
     </footer>
-    <script>
-        const password = document.getElementById('password');
-        const togglePassword = document.getElementById('togglePassword');
-
-        togglePassword.addEventListener('click', () => {
-            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-            password.setAttribute('type', type);
-
-            // Toggle icon
-            togglePassword.classList.toggle('fa-eye');
-            togglePassword.classList.toggle('fa-eye-slash');
-        });
-        // Get current page
-        const currentPage = window.location.pathname.split("/").pop();
-
-        document.querySelectorAll(".nav-link").forEach(link => {
-            if (link.getAttribute("href") === currentPage) {
-                link.classList.remove("text-gray-700");
-                link.classList.add("text-blue-600", "underline", "font-semibold");
-            }
-        });
-    </script>
 
     <script>
+        // Password toggle visibility
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('togglePassword');
+
+        if (toggleIcon && passwordInput) {
+            toggleIcon.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Toggle eye icon (open ↔ closed)
+                toggleIcon.classList.toggle('fa-eye');
+                toggleIcon.classList.toggle('fa-eye-slash');
+            });
+        }
+
+        // Your existing batch field toggle script
         const roleSelect = document.getElementById('roleSelect');
         const batchDiv = document.getElementById('batchDiv');
-
         roleSelect.addEventListener('change', function() {
             batchDiv.style.display = (this.value === 'student') ? 'block' : 'none';
         });
-
         if (roleSelect.value !== 'student') batchDiv.style.display = 'none';
     </script>
-
+    <script src="js/main.js"></script>
     <script src="js/sweetalert2.all.min.js"></script>
     <script src="js/toast.js"></script>
 
