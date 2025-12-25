@@ -127,11 +127,11 @@ if (isset($_POST['login'])) {
 
 </head>
 
-<body class="bg-slate-80 min-h-screen">
+<body class="bg-[#F6F6F6] min-h-screen">
 
-    <!-- Navigation with mobile sidebar -->
-    <nav class="sticky top-0 bg-[#EBF4DD] shadow-md z-50">
-        <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-5 md:py-6 lg:py-7">
+    <!-- Navigation with mobile sidebar-->
+    <nav class=" top-0 bg-[#FFFFFF] shadow-md z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-5 md:py-6 lg:py-6">
             <div class="flex items-center justify-between">
 
                 <!-- Logo -->
@@ -173,7 +173,7 @@ if (isset($_POST['login'])) {
 
         <!-- Mobile Sidebar -->
         <div id="mobile-sidebar" class="
-    fixed inset-y-0 right-0 z-50 w-72 sm:w-80 bg-[#EBF4DD] shadow-2xl
+    fixed inset-y-0 right-0 z-50 w-72 sm:w-80 bg-[#FFFFFF] shadow-2xl
     transform translate-x-full transition-transform duration-300 ease-in-out
     md:hidden
   ">
@@ -204,11 +204,11 @@ if (isset($_POST['login'])) {
     </nav>
 
     <!-- Login Form Container -->
-    <div class="flex-1 flex items-center justify-center px-4 py-10 sm:px-6 sm:py-12 md:px-8 lg:py-16 bg-gradient-to-br from-blue-50/30 to-indigo-50/30 min-h-screen">
+    <div class="flex-1 flex items-center bg-[#F6F6F6] justify-center px-4 py-10 sm:px-6 sm:py-12 md:px-8 lg:py-16  min-h-screen">
         <form
             method="POST"
-            class="bg-slate-90 rounded-2xl shadow-xl w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl 
-           p-6 sm:p-8 md:p-10 lg:p-12 space-y-6 sm:space-y-7 md:space-y-8">
+            class="bg-[#EEEEEE] rounded-2xl shadow-xl w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-xl 
+           p-6 sm:p-8 md:p-10 lg:p-11 space-y-6 sm:space-y-7 md:space-y-8">
             <!-- Heading -->
             <h2 class="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-center text-gray-800 tracking-tight">
                 Login
@@ -223,34 +223,34 @@ if (isset($_POST['login'])) {
 
             <!-- Role Selection -->
             <div>
-                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Select Role</label>
+                <label class="block text-gray-500 font-semibold mb-2 text-base sm:text-lg">Select Role</label>
                 <select name="role" id="roleSelect"
-                    class="w-full px-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200">
-                    <option value="student" selected>Student</option>
-                    <option value="teacher">Teacher</option>
-                    <option value="admin">Admin</option>
+                    class="w-full px-4 py-3.5 bg-[#FDFDFF] border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200">
+                    <option value="student" selected class="text-gray-500">Student</option>
+                    <option value="teacher" class="text-gray-500">Teacher</option>
+                    <option value="admin" class="text-gray-500">Admin</option>
                 </select>
             </div>
 
             <!-- Email / User ID -->
             <div>
-                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Email / User ID</label>
+                <label class="block text-gray-500 font-semibold mb-2 text-base sm:text-lg">Email / User ID</label>
                 <input type="text" name="username" placeholder="Enter your email or user ID" required
-                    class="w-full px-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
+                    class="w-full px-4 py-3.5 bg-[#FDFDFF] border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
             </div>
 
             <!-- Batch Field -->
             <div id="batchDiv">
-                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Batch Year</label>
+                <label class="block text-gray-500 font-semibold mb-2 text-base sm:text-lg">Batch Year</label>
                 <input type="text" name="batch" placeholder="e.g., 2023"
-                    class="w-full px-4 py-3.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
+                    class="w-full px-4 py-3.5 bg-[#FDFDFF] border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
             </div>
 
             <!-- Password with Eye Icon -->
             <div class="relative">
-                <label class="block text-gray-700 font-semibold mb-2 text-base sm:text-lg">Password</label>
+                <label class="block text-gray-500 font-semibold mb-2 text-base sm:text-lg">Password</label>
                 <input type="password" name="password" id="password" placeholder="Enter your password" required
-                    class="w-full px-4 py-3.5 pr-12 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
+                    class="w-full px-4 py-3.5 pr-12 bg-[#FDFDFF] border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-base sm:text-lg transition-all duration-200" />
                 <!-- Eye Icon (positioned perfectly) -->
                 <i id="togglePassword"
                     class="fa-solid fa-eye absolute right-4 top-1/2  mt-4 mr-1 -translate-y-1/2 text-gray-500 hover:text-gray-700 cursor-pointer text-xs sm:text-xl transition-colors duration-200">
@@ -266,9 +266,9 @@ if (isset($_POST['login'])) {
     </div>
 
     <!-- footer -->
-    <footer class="bg-[#EBF4DD] border-t border-gray-200 py-6 mt-auto">
+    <footer class="bg-[#FFFFFF] border-t border-gray-200 py-6 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-black uppercase text-sm sm:text-base font-bold">
+            <p class="text-black uppercase text-center text-sm sm:text-base font-bold">
                 © 2026 All Rights Reserved. Designed By Mohan Chaudhary & Raj Bastola
             </p>
         </div>

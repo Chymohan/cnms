@@ -235,7 +235,7 @@ if (!in_array($page, $allowed_pages, true)) {
             </div>
             <footer class="main-footer ">
                 <div class="footer-center d-flex justify-content-center align-items-center">
-                    <p class="w-full font-16  " style=" color: black; font-family: Arial, sans-serif; ">© 2026 All Right Reserved. Designed By Mohan Chaudhary & Raj Bastola</p>
+                    <p class="w-full font-16 text-center " style=" color: black; font-family: Arial, sans-serif; ">© 2026 All Right Reserved. Designed By Mohan Chaudhary & Raj Bastola</p>
                 </div>
 
             </footer>

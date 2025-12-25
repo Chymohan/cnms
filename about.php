@@ -11,11 +11,11 @@
     <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
 </head>
 
-<body class="bg-slate-80 min-h-screen">
+<body class="bg-[#F5F5F5] min-h-screen">
 
     <!-- Navigation with mobile sidebar -->
-    <nav class="sticky top-0 bg-[#EBF4DD] shadow-md z-50">
-        <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-5 md:py-6 lg:py-7">
+    <nav class=" top-0 bg-[#FFFFFF] shadow-md z-50">
+        <div class="container mx-auto px-4 sm:px-6 py-4 sm:py-5 md:py-6 lg:py-6">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <div class="flex items-center gap-3">
@@ -54,7 +54,7 @@
         </div>
 
         <!-- Mobile Sidebar -->
-        <div id="mobile-sidebar" class="fixed inset-y-0 right-0 z-50 w-72 sm:w-80 bg-[#EBF4DD] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div id="mobile-sidebar" class="fixed inset-y-0 right-0 z-50 w-72 sm:w-80 bg-[#FFFFFF] shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
             <div class="flex justify-between items-center p-6 border-b border-gray-300">
                 <span class="text-xl font-bold text-gray-800">Menu</span>
                 <button id="close-sidebar" class="text-gray-700 hover:text-gray-900">
@@ -115,9 +115,9 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-[#EBF4DD] border-t border-gray-200 py-6 mt-auto">
+    <footer class="bg-[#FFFFFF] border-t border-gray-200 py-6 mt-auto">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-black uppercase text-sm sm:text-base font-bold">
+            <p class="text-black uppercase text-center text-sm sm:text-base font-bold">
                 © 2026 All Rights Reserved. Designed By Mohan Chaudhary & Raj Bastola
             </p>
         </div>

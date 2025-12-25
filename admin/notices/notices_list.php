@@ -4,27 +4,22 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
   exit;
 }
 
+
 // Search/filter inputs
-$title   = $_GET['title'] ?? '';
 $category = $_GET['category'] ?? '';
 $status  = $_GET['status'] ?? '';
 $date    = $_GET['date'] ?? '';
-$search   = $_GET['search'] ?? '';
 
-// Build dynamic SQL
-$sql = "SELECT n.notice_id, n.title, n.category, n.status, n.created_at, u.name as creator
+// Base SQL
+$sql = "SELECT n.notice_id, n.title, n.category, n.status, n.created_at, u.name AS creator
         FROM notices n
         JOIN users u ON n.created_by = u.user_id
-        WHERE 1"; // 1 allows us to append AND conditions easily
+        WHERE 1"; // allows dynamic ANDs
 
 $params = [];
 $types = '';
 
-if ($title) {
-  $sql .= " AND n.title LIKE ?";
-  $params[] = "%$title%";
-  $types .= 's';
-}
+
 if ($category) {
   $sql .= " AND n.category=?";
   $params[] = $category;
@@ -36,21 +31,21 @@ if ($status) {
   $types .= 's';
 }
 if ($date) {
-  $sql .= " AND DATE(n.created_at)=?";
-  $params[] = $date;
-  $types .= 's';
-}
+        $sql .= " AND DATE(n.created_at)=?";
+        $params[] = $date;
+        $types .= 's';
+    }
 
-$sql .= " ORDER BY n.created_at DESC";
+    $sql .= " ORDER BY n.created_at DESC";
 
-$stmt = $conn->prepare($sql);
-if ($params) {
-  $stmt->bind_param($types, ...$params);
-}
-$stmt->execute();
-$result = $stmt->get_result();
-$notices = $result->fetch_all(MYSQLI_ASSOC);
-?>
+    $stmt = $conn->prepare($sql);
+    if ($params) {
+        $stmt->bind_param($types, ...$params);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $notices = $result->fetch_all(MYSQLI_ASSOC);
+    ?>
 
 <div class="card-body">
   <div class="card-header d-flex justify-content-between">
@@ -60,6 +55,7 @@ $notices = $result->fetch_all(MYSQLI_ASSOC);
 
   <!-- FILTER FORM START -->
   <form method="GET" class="mb-2 d-flex gap-2 align-items-end table-responsive">
+    <input type="hidden" name="page" value="notices/notices_list.php">
     <table class="table table-striped">
       <th>
         <div>
